@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, 'html')));
 app.use('/css', express.static(path.join(__dirname, 'css')));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
+app.use(session({ secret: 'keyboard cat', resave: false, saveUninitialized: false, cookie: { secure: false, maxAge: 60000 } }));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -59,8 +59,8 @@ app.get('/user', ensureLogin.ensureLoggedIn('/login'), (req, res) => {
 /*
 (async () => {
   await UserDetails.register({ username: 'paul' }, 'paul');
-  await UserDetails.register({ username: 'west' }, 'west');
-  await UserDetails.register({ username: 'kim' }, 'kim');
+  await UserDetails.register({ username: 'joy' }, 'joy');
+  await UserDetails.register({ username: 'ray' }, 'ray');
   console.log('seeded users');
 })();
 */
