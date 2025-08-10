@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Login</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <main class="wrap">
+    <h1>Login</h1>
+    <form method="post" action="/login" class="card">
+      <label>Username<br><input type="text" name="username" required></label>
+      <label>Password<br><input type="password" name="password" required></label>
+      <button type="submit">Sign in</button>
+      <div id="error-message" class="error" style="display:none;"></div>
+    </form>
+    <p class="muted">Try one of the users you created.</p>
+  </main>
+  <script>
+    var params = new URLSearchParams(window.location.search);
+    var msg = params.get('info');
+    if (msg) {
+      var el = document.getElementById('error-message');
+      el.textContent = msg;
+      el.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
